@@ -5,7 +5,7 @@ const {
     readTeacherInfo,
     addTeacher,
     deleteTeacher,
-    dbinitialize,
+    initializeDatabase,
 } = require ("./database.js");
 
 const app = express();
@@ -13,9 +13,9 @@ const bodyParser = require  ("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/dbinitialize", async function (req, res) {
+app.get("/initializeDatabase", async function (req, res) {
   console.log("DB is getting initialized");
-  let data = await dbinitialize();
+  let data = await initializeDatabase();
 
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
